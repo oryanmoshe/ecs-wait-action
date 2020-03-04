@@ -10,7 +10,7 @@ const AWS = require("aws-sdk");
  * @param   {string[]} params.services      - A list of ECS services to check for stability
  * @returns {Promise}                         A promise to be resolved when services are stable or rejected after the timeout
  */
-const waitForStability = ({ ecsConnection, cluster, services }) =>
+const waitForStability = async ({ ecsConnection, cluster, services }) =>
   ecsConnection.waitFor("servicesStable", { cluster, services }).promise();
 
 /**
