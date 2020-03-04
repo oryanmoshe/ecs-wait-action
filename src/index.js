@@ -76,7 +76,7 @@ const main = async () => {
     const ecsConnection = createEcsConnection(params);
     params["ecsConnection"] = ecsConnection;
 
-    const actualRetries = retry(params);
+    const actualRetries = await retry(params);
     if (actualRetries > params.retries) {
       if (params.verbose) {
         console.error(`Service is not stable after ${params.retries} retries!`);
