@@ -73,6 +73,7 @@ const main = async () => {
       verbose: JSON.parse(core.getInput("verbose"))
     };
 
+    console.log(params);
     const ecsConnection = createEcsConnection(params);
     params["ecsConnection"] = ecsConnection;
 
