@@ -11,7 +11,9 @@ const AWS = require("aws-sdk");
  * @returns {Promise}                         A promise to be resolved when services are stable or rejected after the timeout
  */
 const waitForStability = async ({ ecsConnection, cluster, services }) =>
-  ecsConnection.waitFor("servicesStable", { cluster, services }).promise();
+  await ecsConnection
+    .waitFor("servicesStable", { cluster, services })
+    .promise();
 
 /**
  * Retries the ECS services stability check for the given amount of retries.
