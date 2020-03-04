@@ -78,12 +78,12 @@ const main = async () => {
 
     const actualRetries = retry(params);
     if (actualRetries > params.retries) {
-      if (verbose) {
+      if (params.verbose) {
         console.error(`Service is not stable after ${params.retries} retries!`);
       }
       core.setFailed(`Service is not stable after ${params.retries} retries!`);
     } else {
-      if (verbose) {
+      if (params.verbose) {
         console.log(`Service is stable after ${actualRetries} retries!`);
       }
       core.setOutput("retries", actualRetries);
