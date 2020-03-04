@@ -73,6 +73,7 @@ const main = async () => {
       verbose: core.getInput("verbose") === "true"
     };
     console.log(params);
+
     const ecsConnection = createEcsConnection(params);
     params["ecsConnection"] = ecsConnection;
 
