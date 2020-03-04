@@ -86,7 +86,7 @@ const main = async () => {
       if (params.verbose) {
         console.log(`Service is stable after ${actualRetries} retries!`);
       }
-      core.setOutput('retries', actualRetries);
+      core.setOutput('retries', actualRetries.toString());
     }
   } catch (error) {
     core.setFailed(error.message);
