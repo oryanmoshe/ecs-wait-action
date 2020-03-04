@@ -7,5 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "oryan@moshe.ai",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "^1.2.3",
+    "@actions/github": "^2.1.1",
+    "aws-sdk": "^2.632.0"
+  },
+  "devDependencies": {
+    "@zeit/ncc": "^0.21.1"
+  }
 }
