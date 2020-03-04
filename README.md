@@ -5,21 +5,6 @@ This action allows you to wait for services to become stable **and** retry the w
 
 ## Inputs
 
-### `aws-access-key-id`
-
-**Required** - _string_\
-Your `AWS_ACCESS_KEY_ID`.
-
-### `aws-secret-access-key` - ``
-
-**Required** - _string_\
-Your `AWS_SECRET_ACCESS_KEY`.
-
-### `aws-region`
-
-**Required** - _string_\
-Your `AWS_REGION`.
-
 ### `ecs-cluster`
 
 **Required** - _string_\
@@ -32,8 +17,26 @@ A list of ECS services to make sure are stable.
 
 ### `retries`
 
-**Required** - _integer_\
+_Optional_ - _integer_\
 The number of times you want to try the stability check. Default `2`.
+
+### `aws-access-key-id`
+
+_Optional_ - _string_\
+Your AWS ACCESS_KEY_ID.\
+Must be provided as an input / defined as an environment variable.
+
+### `aws-secret-access-key`
+
+_Optional_ - _string_\
+Your AWS SECRET_ACCESS_KEY.\
+Must be provided as an input / defined as an environment variable.
+
+### `aws-region`
+
+_Optional_ - _string_\
+Your AWS REGION.\
+Must be provided as an input / defined as an environment variable.
 
 ### `verbose`
 
@@ -49,8 +52,10 @@ How many retries happened until success.
 
 ## Example usage
 
+### Using all available options
+
 ```yaml
-uses: oryanmoshe/ecs-wait-action@v1.1
+uses: oryanmoshe/ecs-wait-action@v1.3
 with:
   aws-access-key-id: AKIAIOSFODNN7EXAMPLE
   aws-secret-access-key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
@@ -59,4 +64,13 @@ with:
   ecs-services: '["my-ecs-service-1", "my-ecs-service-2"]'
   retries: 5
   verbose: false
+```
+
+### Minimal configuration
+
+```yaml
+uses: oryanmoshe/ecs-wait-action@v1.3
+with:
+  ecs-cluster: my-ecs-cluster
+  ecs-services: '["my-ecs-service-1", "my-ecs-service-2"]'
 ```

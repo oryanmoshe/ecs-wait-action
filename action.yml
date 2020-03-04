@@ -2,9 +2,14 @@ name: 'ECS Wait'
 author: 'Oryan Moshe'
 description: 'Waits for ECS service stability'
 inputs:
+  ecs-cluster:
+    description: 'The ECS cluster name (string)'
+    required: true
+  ecs-services:
+    description: 'List of ECS services to wait for (string[])'
+    required: true
   retries:
     description: 'How many times to retry the 10 minute wait (integer)'
-    required: true
     default: 2
   aws-access-key-id:
     description: 'The AWS_ACCESS_KEY_ID (string)'
@@ -12,12 +17,6 @@ inputs:
     description: 'The AWS_SECRET_ACCESS_KEY (string)'
   aws-region:
     description: 'The AWS_REGION (string)'
-  ecs-cluster:
-    description: 'The ECS cluster name (string)'
-    required: true
-  ecs-services:
-    description: 'List of ECS services to wait for (string[])'
-    required: true
   verbose:
     description: 'Whether to print the retry log (bool)'
     default: false
