@@ -64,14 +64,24 @@ const createEcsConnection = ({ accessKeyId, secretAccessKey, region }) =>
 const main = async () => {
   try {
     const params = {
-      accessKeyId: core.getInput('aws-access-key-id'),
-      secretAccessKey: core.getInput('aws-secret-access-key'),
-      region: core.getInput('aws-region'),
+      accessKeyId:
+        core.getInput('aws-access-key-id') || process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey:
+        core.getInput('aws-secret-access-key') ||
+        process.env.AWS_SECRET_ACCESS_KEY,
+      region: core.getInput('aws-region') || process.env.AWS_REGION,
       retries: parseInt(core.getInput('retries'), 10),
       cluster: core.getInput('ecs-cluster'),
       services: JSON.parse(core.getInput('ecs-services')),
       verbose: core.getInput('verbose') === 'true',
     };
+
+    if (!params.accessKeyId || !params.secretAccessKey || !params.region) {
+      core.setFailed(
+        'AWS credentials were not found in inputs or environment variables.'
+      );
+      return;
+    }
 
     const ecsConnection = createEcsConnection(params);
     params['ecsConnection'] = ecsConnection;

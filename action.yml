@@ -1,35 +1,32 @@
-name: "ECS Wait"
-author: "Oryan Moshe"
-description: "Waits for ECS service stability"
+name: 'ECS Wait'
+author: 'Oryan Moshe'
+description: 'Waits for ECS service stability'
 inputs:
   retries:
-    description: "How many times to retry the 10 minute wait (integer)"
+    description: 'How many times to retry the 10 minute wait (integer)'
     required: true
     default: 2
   aws-access-key-id:
-    description: "The AWS_ACCESS_KEY_ID (string)"
-    required: true
+    description: 'The AWS_ACCESS_KEY_ID (string)'
   aws-secret-access-key:
-    description: "The AWS_SECRET_ACCESS_KEY (string)"
-    required: true
+    description: 'The AWS_SECRET_ACCESS_KEY (string)'
   aws-region:
-    description: "The AWS_REGION (string)"
-    required: true
+    description: 'The AWS_REGION (string)'
   ecs-cluster:
-    description: "The ECS cluster name (string)"
+    description: 'The ECS cluster name (string)'
     required: true
   ecs-services:
-    description: "List of ECS services to wait for (string[])"
+    description: 'List of ECS services to wait for (string[])'
     required: true
   verbose:
-    description: "Whether to print the retry log (bool)"
+    description: 'Whether to print the retry log (bool)'
     default: false
 outputs:
   retries:
-    description: "How many retries happened until success (integer)"
+    description: 'How many retries happened until success (integer)'
 runs:
-  using: "node12"
-  main: "dist/index.js"
+  using: 'node12'
+  main: 'dist/index.js'
 branding:
-  icon: "clock"
-  color: "purple"
+  icon: 'clock'
+  color: 'purple'
