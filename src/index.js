@@ -74,7 +74,6 @@ const main = async () => {
       services: JSON.parse(core.getInput("ecs-services")),
       verbose: core.getInput("verbose") === "true"
     };
-    console.log(params);
 
     const ecsConnection = createEcsConnection(params);
     params["ecsConnection"] = ecsConnection;
