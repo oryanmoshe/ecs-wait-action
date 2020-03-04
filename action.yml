@@ -5,30 +5,25 @@ inputs:
   retries:
     description: "How many times to retry the 10 minute wait (integer)"
     required: true
-    default: 1
-  aws_access_key_id:
+    default: 2
+  aws-access-key-id:
     description: "The AWS_ACCESS_KEY_ID (string)"
     required: true
-    default: 1
-  aws_secret_access_key:
+  aws-secret-access-key:
     description: "The AWS_SECRET_ACCESS_KEY (string)"
     required: true
-    default: 1
-  aws_region:
+  aws-region:
     description: "The AWS_REGION (string)"
     required: true
-    default: 1
-  ecs_cluster:
+  ecs-cluster:
     description: "The ECS cluster name (string)"
     required: true
-    default: 1
-  ecs_services:
+  ecs-services:
     description: "List of ECS services to wait for (string[])"
     required: true
   verbose:
     description: "Whether to print the retry log (bool)"
-    required: true
-    deafult: true
+    default: false
 outputs:
   retries:
     description: "How many retries happened until success (integer)"
