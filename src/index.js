@@ -1,5 +1,5 @@
-const core = require("@actions/core");
-const AWS = require("aws-sdk");
+const core = require('@actions/core');
+const AWS = require('aws-sdk');
 
 /**
  * Waits for given AWS ECS services transition into "servicesStable" state.
@@ -11,7 +11,7 @@ const AWS = require("aws-sdk");
  * @returns {Promise}                         A promise to be resolved when services are stable or rejected after the timeout
  */
 const waitForStability = ({ ecsConnection, cluster, services }) =>
-  ecsConnection.waitFor("servicesStable", { cluster, services }).promise();
+  ecsConnection.waitFor('servicesStable', { cluster, services }).promise();
 
 /**
  * Retries the ECS services stability check for the given amount of retries.
@@ -52,10 +52,10 @@ const retry = async ({ retries, verbose, ...params }) => {
  */
 const createEcsConnection = ({ accessKeyId, secretAccessKey, region }) =>
   new AWS.ECS({
-    apiVersion: "2014-11-13",
+    apiVersion: '2014-11-13',
     accessKeyId,
     secretAccessKey,
-    region
+    region,
   });
 
 /**
@@ -64,17 +64,17 @@ const createEcsConnection = ({ accessKeyId, secretAccessKey, region }) =>
 const main = async () => {
   try {
     const params = {
-      accessKeyId: core.getInput("aws-access-key-id"),
-      secretAccessKey: core.getInput("aws-secret-access-key"),
-      region: core.getInput("aws-region"),
-      retries: parseInt(core.getInput("retries"), 10),
-      cluster: core.getInput("ecs-cluster"),
-      services: JSON.parse(core.getInput("ecs-services")),
-      verbose: core.getInput("verbose") === "true"
+      accessKeyId: core.getInput('aws-access-key-id'),
+      secretAccessKey: core.getInput('aws-secret-access-key'),
+      region: core.getInput('aws-region'),
+      retries: parseInt(core.getInput('retries'), 10),
+      cluster: core.getInput('ecs-cluster'),
+      services: JSON.parse(core.getInput('ecs-services')),
+      verbose: core.getInput('verbose') === 'true',
     };
 
     const ecsConnection = createEcsConnection(params);
-    params["ecsConnection"] = ecsConnection;
+    params['ecsConnection'] = ecsConnection;
 
     const actualRetries = await retry(params);
     if (actualRetries > params.retries) {
@@ -86,7 +86,7 @@ const main = async () => {
       if (params.verbose) {
         console.log(`Service is stable after ${actualRetries} retries!`);
       }
-      core.setOutput("retries", actualRetries);
+      core.setOutput('retries', actualRetries);
     }
   } catch (error) {
     core.setFailed(error.message);
