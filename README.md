@@ -50,7 +50,7 @@ How many retries happened until success.
 ## Example usage
 
 ```yaml
-uses: oryanmoshe/ecs-wait-action@v1
+uses: oryanmoshe/ecs-wait-action@v1.1
 with:
   aws-access-key-id: AKIAIOSFODNN7EXAMPLE
   aws-secret-access-key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
