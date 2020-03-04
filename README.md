@@ -52,11 +52,11 @@ How many retries happened until success.
 ```yaml
 uses: oryanmoshe/ecs-wait-action@v1
 with:
-  aws-access-key-id: "AKIAIOSFODNN7EXAMPLE"
-  aws-secret-access-key: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
-  aws-region: "us-east-1"
-  ecs-cluster: "my-ecs-cluster"
+  aws-access-key-id: AKIAIOSFODNN7EXAMPLE
+  aws-secret-access-key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+  aws-region: us-east-1
+  ecs-cluster: my-ecs-cluster
   ecs-services: '["my-ecs-service-1", "my-ecs-service-2"]'
-  retries: "5"
-  verbose: "false"
+  retries: 5
+  verbose: false
 ```
