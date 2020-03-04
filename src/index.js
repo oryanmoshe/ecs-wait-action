@@ -64,13 +64,13 @@ const createEcsConnection = ({ accessKeyId, secretAccessKey, region }) =>
 const main = async () => {
   try {
     const params = {
-      accessKeyId: core.getInput("aws-access-key-id"),
-      secretAccessKey: core.getInput("aws-secret-access-key"),
-      region: core.getInput("aws-region"),
-      retries: core.getInput("retries"),
-      cluster: core.getInput("ecs-cluster"),
-      services: core.getInput("ecs-services"),
-      verbose: core.getInput("verbose")
+      accessKeyId: JSON.parse(core.getInput("aws-access-key-id")),
+      secretAccessKey: JSON.parse(core.getInput("aws-secret-access-key")),
+      region: JSON.parse(core.getInput("aws-region")),
+      retries: JSON.parse(core.getInput("retries")),
+      cluster: JSON.parse(core.getInput("ecs-cluster")),
+      services: JSON.parse(core.getInput("ecs-services")),
+      verbose: JSON.parse(core.getInput("verbose"))
     };
 
     const ecsConnection = createEcsConnection(params);

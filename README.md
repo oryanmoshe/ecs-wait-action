@@ -56,7 +56,7 @@ with:
   aws-secret-access-key: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
   aws-region: "us-east-1"
   ecs-cluster: "my-ecs-cluster"
-  ecs-services: ["my-ecs-service-1", "my-ecs-service-2"]
-  retries: 5
-  verbose: false
+  ecs-services: '["my-ecs-service-1", "my-ecs-service-2"]'
+  retries: "5"
+  verbose: "false"
 ```
